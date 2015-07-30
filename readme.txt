@@ -1,0 +1,1 @@
+YPlanner - Narzêdzie do zarz¹dzania zadaniami
