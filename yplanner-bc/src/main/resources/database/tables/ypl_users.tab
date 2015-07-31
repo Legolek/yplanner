@@ -1,0 +1,15 @@
+CREATE TABLE YPL_USERS (
+	ID NUMBER(10) PRIMARY KEY,
+	FIRST_NAME    VARCHAR2(32),
+	LAST_NAME     VARCHAR2(32),
+	LOGIN         VARCHAR2(32),
+	PASSWORD      VARCHAR2(128),
+	EMAIL         VARCHAR2(64)
+);
+
+COMMENT ON COLUMN ID IS 'Unique identifier';
+COMMENT ON COLUMN FIRST_NAME IS 'User''s first name';
+COMMENT ON COLUMN LAST_NAME IS 'User''s last name';
+COMMENT ON COLUMN LOGIN IS 'User''s login used for authenticaton';
+COMMENT ON COLUMN PASSWORD IS 'User''s password used for authenticaton. Encrypted with ? algorithm';
+COMMENT ON COLUMN EMAIL IS 'User''s email address';
