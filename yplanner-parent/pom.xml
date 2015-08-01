@@ -10,6 +10,7 @@
 
 	<properties>
 		<spring.framework.version>4.1.7.RELEASE</spring.framework.version>
+		<spring.security.version>4.0.2.RELEASE</spring.security.version>
 		<hibernate.framework.version>4.3.10.Final</hibernate.framework.version>
 	</properties>
 
@@ -62,11 +63,31 @@
 				<artifactId>spring-orm</artifactId>
 				<version>${spring.framework.version}</version>
 			</dependency>
+
+			<dependency>
+				<groupId>org.springframework.security</groupId>
+				<artifactId>spring-security-core</artifactId>
+				<version>${spring.security.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework.security</groupId>
+				<artifactId>spring-security-config</artifactId>
+				<version>${spring.security.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework.security</groupId>
+				<artifactId>spring-security-web</artifactId>
+				<version>${spring.security.version}</version>
+			</dependency>
+
 		</dependencies>
 	</dependencyManagement>
 
 	<modules>
 		<module>../yplanner-bc</module>
+		<module>../yplanner-web</module>
 	</modules>
 
 	<build>
