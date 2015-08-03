@@ -6,11 +6,19 @@
 <script src="js/index.js"></script>
 <script src="js/ui-bootstrap-tpls-0.13.1.min.js"></script>
 <link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/yplanner.css" rel="stylesheet">
 <title>Welcome!</title>
 </head>
 <body ng-app="index">
-	<div ng-controller="LoginController as loginCtrl">
-		<h3>{{loginCtrl.welcomeMsg}}</h3>
+	<div id="loginForm" ng-controller="LoginController as loginCtrl" class="form-group">
+		<form>
+			<p>YPlanner ver. 0.0.1-SNAPSHOT</p>
+			<p><label for="loginField">Login</label>
+			<input name="loginField" class="form-control" type="text" ng-model="loginCtrl.login"  /></p>
+			<p><label for="passwordField">Password</label>
+			<input name="passwordField" class="form-control" type="password" ng-model="loginCtrl.password" /></p>
+			<p><button class='btn btn-primary' ng-click="loginCtrl.submitLogin()">Login</button></p>
+		</form>
 	</div>
 </body>
 </html>
