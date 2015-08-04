@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <script src="js/angular.min.js"></script>
+<script src="js/angular-resource.min.js"></script>
+<script src="js/angular-route.min.js"></script>
 <script src="js/index.js"></script>
 <script src="js/ui-bootstrap-tpls-0.13.1.min.js"></script>
 <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -13,9 +15,9 @@
 	<div id="loginForm" ng-controller="LoginController as loginCtrl" class="form-group">
 		<form>
 			<p>YPlanner ver. 0.0.1-SNAPSHOT</p>
-			<p><label for="loginField">Login</label>
+			<p><label for="loginField">{{loginCtrl.msg['login.page.login.label']}}</label>
 			<input name="loginField" class="form-control" type="text" ng-model="loginCtrl.login"  /></p>
-			<p><label for="passwordField">Password</label>
+			<p><label for="passwordField">{{loginCtrl.msg['login.page.password.label']}}</label>
 			<input name="passwordField" class="form-control" type="password" ng-model="loginCtrl.password" /></p>
 			<p><button class='btn btn-primary' ng-click="loginCtrl.submitLogin()">Login</button></p>
 		</form>
