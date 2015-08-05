@@ -14,8 +14,8 @@
         http://www.springframework.org/schema/security/spring-security.xsd">
 
 	<context:component-scan base-package="pl.plask.team.yplanner.web" />
-	
-	<mvc:view-controller path="/" view-name="forward:/index.html" />
+
+	<mvc:view-controller path="/" view-name="forward:/yplanner.html" />
 
 	<bean id="messagesProperties"
 		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
@@ -27,12 +27,16 @@
 	</bean>
 
 	<sec:http>
-		<sec:intercept-url pattern="/index.html" access="isAnonymous()" />
-		<sec:intercept-url pattern="/css/**" access="isAnonymous()" />
-		<sec:intercept-url pattern="/js/**" access="isAnonymous()" />
-		<sec:intercept-url pattern="/fonts/**" access="isAnonymous()" />
+		<sec:intercept-url pattern="/index.html" access="permitAll" />
+		<sec:intercept-url pattern="/css/**" access="permitAll" />
+		<sec:intercept-url pattern="/js/**" access="permitAll" />
+		<sec:intercept-url pattern="/fonts/**" access="permitAll" />
+		<sec:intercept-url pattern="/res/**" access="permitAll" />
 		<sec:intercept-url pattern="/**" access="hasRole('ROLE_USER')" />
-		<sec:form-login login-page="/index.html" />
+		<sec:form-login username-parameter="name"
+			password-parameter="password" login-page="/index.html"
+			default-target-url="/yplanner.html" authentication-failure-url="/index.html?error" />
+		<sec:csrf disabled="true" />
 	</sec:http>
 
 	<sec:authentication-manager>
@@ -63,5 +67,5 @@
 	<mvc:resources mapping="/fonts/**" location="/static/fonts/" />
 	<mvc:resources mapping="/js/**" location="/static/js/" />
 	<mvc:resources mapping="/index.html" location="/static/index.html" />
-
+	<mvc:resources mapping="/yplanner.html" location="/static/yplanner.html" />
 </beans>

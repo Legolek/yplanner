@@ -1,4 +1,6 @@
-var app = angular.module("index", ['ngRoute', 'ngResource']);
+var app = angular.module("index", ['ngRoute', 'ngResource'], function($locationProvider) {
+	$locationProvider.html5Mode(true);
+});
 
 app.service("MessagesService", function($resource) {
 	var messages = {};
@@ -12,13 +14,13 @@ app.service("MessagesService", function($resource) {
 	}
 });
 
-app.controller("LoginController", function($resource, MessagesService) {
+app.controller("LoginController", function($resource, $location, MessagesService) {
 	this.login = null;
 	this.password = null;
-	this.submitLogin = function() {
-		alert(this.login + " " + this.password);
-	};
-	
+	this.error = $location.search().error;
+	if (this.error) {
+		$('#loginForm').css('height', '310px');
+	}
 	this.msg = MessagesService.messages;
 	MessagesService.loadMessages();
 });
