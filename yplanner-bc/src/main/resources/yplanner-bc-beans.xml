@@ -22,7 +22,7 @@
 		<property name="dataSource" ref="dataSource" />
 		<property name="annotatedClasses">
 			<list>
-				<value>pl.plask.team.yplanner.bc.model.UserDS</value>
+				<value>pl.plask.team.yplanner.bc.model.ds.UserDS</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">

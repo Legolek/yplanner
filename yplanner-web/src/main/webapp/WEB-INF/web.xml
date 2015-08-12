@@ -10,7 +10,11 @@
 
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>/WEB-INF/yplanner-web-beans.xml</param-value>
+		<param-value>
+			classpath*:yplanner-bc-beans.xml,
+			/WEB-INF/yplanner-web-beans.xml,
+			/WEB-INF/yplanner-ds-cfg.xml
+		</param-value>
 	</context-param>
 
 	<servlet>
