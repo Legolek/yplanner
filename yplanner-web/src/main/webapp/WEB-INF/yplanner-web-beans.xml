@@ -30,6 +30,7 @@
 		<sec:intercept-url pattern="/index.html" access="permitAll" />
 		<sec:intercept-url pattern="/css/**" access="permitAll" />
 		<sec:intercept-url pattern="/js/**" access="permitAll" />
+		<sec:intercept-url pattern="/img/**" access="permitAll" />
 		<sec:intercept-url pattern="/fonts/**" access="permitAll" />
 		<sec:intercept-url pattern="/res/**" access="permitAll" />
 		<sec:intercept-url pattern="/**" access="hasRole('ROLE_USER')" />
@@ -63,6 +64,7 @@
 	<mvc:resources mapping="/css/**" location="/static/css/" />
 	<mvc:resources mapping="/fonts/**" location="/static/fonts/" />
 	<mvc:resources mapping="/js/**" location="/static/js/" />
+	<mvc:resources mapping="/img/**" location="/static/img/" />
 	<mvc:resources mapping="/index.html" location="/static/index.html" />
 	<mvc:resources mapping="/yplanner.html" location="/static/yplanner.html" />
 </beans>

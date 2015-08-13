@@ -6,6 +6,7 @@
 <script src="js/angular.min.js"></script>
 <script src="js/angular-resource.min.js"></script>
 <script src="js/angular-route.min.js"></script>
+<script src="js/ui-layout.min.js"></script>
 <script src="js/yplanner.js"></script>
 <script src="js/messages-service.js"></script>
 <script src="js/ui-bootstrap-tpls-0.13.1.min.js"></script>
@@ -16,9 +17,16 @@
 <title>Welcome!</title>
 </head>
 <body ng-app="yplanner" ng-controller="MsgController as msg">
-	<p>{{msg.get['you.are.logged.in']}}</p>
-	<form action="logout" method="POST">
-		<button class='btn btn-link'>{{msg.get['logout.button']}}</button>
-	</form>
+	<div class="yplanner-header">
+		<img class="app-img" src="img/app-icon.png" />
+		<h3 class="logo">{{msg.get['yplanner.app.name']}}</h3>
+		<div class="logout">
+			<form action="logout" method="POST">
+				<button class='btn btn-default'>{{msg.get['logout.button']}}</button>
+			</form>
+		</div>
+	</div>
+	<p style="margin-top:65px">{{msg.get['you.are.logged.in']}}</p>
+
 </body>
 </html>
