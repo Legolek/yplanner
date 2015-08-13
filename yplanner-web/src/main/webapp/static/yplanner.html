@@ -1,17 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
+<base href="/yplanner-web/">
 <meta charset="UTF-8">
 <script src="js/angular.min.js"></script>
 <script src="js/angular-resource.min.js"></script>
 <script src="js/angular-route.min.js"></script>
-<script src="js/index.js"></script>
+<script src="js/yplanner.js"></script>
+<script src="js/messages-service.js"></script>
 <script src="js/ui-bootstrap-tpls-0.13.1.min.js"></script>
+<script src="js/jquery-2.1.4.min.js"></script>
 <link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/bootstrap-theme.min.css" rel="stylesheet">
 <link href="css/yplanner.css" rel="stylesheet">
 <title>Welcome!</title>
 </head>
-<body>
-	You are now logged in!!!
+<body ng-app="yplanner" ng-controller="MsgController as msg">
+	<p>{{msg.get['you.are.logged.in']}}</p>
+	<form action="logout" method="POST">
+		<button class='btn btn-link'>{{msg.get['logout.button']}}</button>
+	</form>
 </body>
 </html>

@@ -37,6 +37,7 @@
 			password-parameter="password" login-page="/index.html"
 			default-target-url="/yplanner.html" authentication-failure-url="/index.html?error" />
 		<sec:csrf disabled="true" />
+		<sec:logout logout-success-url="/index.html" />
 	</sec:http>
 
 	<sec:authentication-manager>

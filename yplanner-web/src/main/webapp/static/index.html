@@ -6,24 +6,27 @@
 <script src="js/angular.min.js"></script>
 <script src="js/angular-resource.min.js"></script>
 <script src="js/angular-route.min.js"></script>
+<script src="js/angular-animate.min.js"></script>
 <script src="js/index.js"></script>
+<script src="js/messages-service.js"></script>
 <script src="js/ui-bootstrap-tpls-0.13.1.min.js"></script>
 <script src="js/jquery-2.1.4.min.js"></script>
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/bootstrap-theme.min.css" rel="stylesheet">
 <link href="css/yplanner.css" rel="stylesheet">
+<link href="css/animate.css" rel="stylesheet">
 <title>Welcome!</title>
 </head>
-<body ng-app="index" ng-controller="LoginController as loginCtrl">
-	<div id="loginForm"  class="form-group">
+<body ng-app="index" ng-controller="MsgController as msg">
+	<div id="loginForm"  class="form-group" ng-controller="LoginController as loginCtrl">
 		<form action="login" method="POST">
-			<p>YPlanner ver. 0.0.1-SNAPSHOT</p>
-			<p><label for="name">{{loginCtrl.msg['login.page.login.label']}}</label>
+			<p>{{msg.get['app.name']}}</p>
+			<p><label for="name">{{msg.get['login.page.login.label']}}</label>
 			<input name="name" class="form-control" type="text" ng-model="loginCtrl.login"  /></p>
-			<p><label for="password">{{loginCtrl.msg['login.page.password.label']}}</label>
+			<p><label for="password">{{msg.get['login.page.password.label']}}</label>
 			<input name="password" class="form-control" type="password" ng-model="loginCtrl.password" /></p>
-			<p><button class='btn btn-primary'>Login</button></p>
-			<div class="alert alert-danger" ng-show="loginCtrl.error">{{loginCtrl.msg['login.page.login.error']}}</div>
+			<p><button class='btn btn-primary'>{{msg.get['login.page.submit.button']}}</button></p>
+			<div class="alert alert-danger" ng-show="loginCtrl.error">{{msg.get['login.page.login.error']}}</div>
 		</form>
 	</div>
 </body>
