@@ -9,14 +9,17 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import pl.plask.team.yplanner.bc.assembler.UserAssembler;
 import pl.plask.team.yplanner.bc.bo.UserBO;
 import pl.plask.team.yplanner.bc.dao.UserDAO;
+import pl.plask.team.yplanner.bc.dto.UserDTO;
 import pl.plask.team.yplanner.bc.model.ds.UserDS;
 
 @Service("userBo")
 public class UserBOImpl implements UserBO {
 
 	private UserDAO userDao;
+	private UserAssembler userAssembler;
 
 	@Override
 	public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
@@ -30,6 +33,12 @@ public class UserBOImpl implements UserBO {
 		}
 		return userDetails;
 	}
+	
+	@Override
+	public UserDTO getUserByLogin(String login) {
+		UserDS user = userDao.getUserByName(login);
+		return userAssembler.convertToDTO(user);
+	}
 
 	public UserDAO getUserDao() {
 		return userDao;
@@ -38,6 +47,15 @@ public class UserBOImpl implements UserBO {
 	@Autowired
 	public void setUserDao(UserDAO userDao) {
 		this.userDao = userDao;
+	}
+	
+	public UserAssembler getUserAssembler() {
+		return userAssembler;
+	}
+
+	@Autowired
+	public void setUserAssembler(UserAssembler userAssembler) {
+		this.userAssembler = userAssembler;
 	}
 
 }

@@ -10,6 +10,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import pl.plask.team.yplanner.bc.dto.UserDTO;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:/yplanner-bc-beans.xml", "classpath:/yplanner-bc-test-ctx.xml"})
 public class UserBOImplTest {
@@ -29,6 +31,17 @@ public class UserBOImplTest {
 		Assert.assertEquals("ROLE_USER", user.getAuthorities().iterator().next().getAuthority());
 		
 		user = userBo.loadUserByUsername(NON_EXISTING_LOGIN);
+	}
+	
+	@Test
+	public void testGetUserByLogin() {
+		UserDTO user = userBo.getUserByLogin(EXISTING_LOGIN);
+		Assert.assertNotNull(user);
+		Assert.assertEquals(EXISTING_LOGIN, user.getLogin());
+		Assert.assertNotNull(user.getId());
+		
+		user = userBo.getUserByLogin(NON_EXISTING_LOGIN);
+		Assert.assertNull(user);
 	}
 
 	public UserBO getUserBo() {
