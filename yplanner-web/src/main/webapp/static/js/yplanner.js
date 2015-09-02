@@ -1,1 +1,1 @@
-var app = angular.module("yplanner", ['msg', 'usr']);
+var app = angular.module("yplanner", ['msg']);
