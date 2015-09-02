@@ -39,14 +39,15 @@
 	background-color: #d3d3d3;
 	z-index: 99;
 	padding-top: 70px;
-	padding-left: 10px
+	padding-left: 2px;
+	padding-right: 2px;
 }
 
 .app-img {
 	float: left;
 	width: 45px;
 	height: 45px;
-	margin-left:10px;
+	margin-left: 10px;
 	margin-top: 10px;
 }
 
@@ -69,4 +70,11 @@
 
 .white:hover {
 	color: white;
+}
+
+.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
+	color: #fff;
+	background-image: url("../img/header_background.jpg");
+	background-repeat: repeat-x;
+	paddi
 }

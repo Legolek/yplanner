@@ -18,6 +18,7 @@ public class UserAssemblerImpl implements UserAssembler {
 		u.setFirstName(user.getFirstName());
 		u.setLastName(user.getLastName());
 		u.setLogin(user.getLogin());
+		u.setAdmin(user.getAdmin() != null ? user.getAdmin().toBoolean() : false);
 		return u;
 	}
 }

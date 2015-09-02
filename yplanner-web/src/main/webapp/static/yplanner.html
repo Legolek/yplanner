@@ -6,7 +6,6 @@
 <script src="js/vendor/angular.min.js"></script>
 <script src="js/vendor/angular-resource.min.js"></script>
 <script src="js/vendor/angular-route.min.js"></script>
-<script src="js/vendor/ui-layout.min.js"></script>
 <script src="js/yplanner.js"></script>
 <script src="js/user/user-service.js"></script>
 <script src="js/messages/messages-service.js"></script>
@@ -18,17 +17,22 @@
 <title>Welcome!</title>
 </head>
 <body ng-app="yplanner" ng-controller="MsgController as msg">
-	<div class="yplanner-header">
+	<div class="yplanner-header" ng-controller="UserController as userCtrl">
 		<img class="app-img" src="img/app-icon.png" />
 		<h3 class="logo white">{{msg['yplanner.app.name']}}</h3>
 		<div class="logout">
+			
 			<form action="logout" method="POST">
+				<span class="white">{{msg['yplanner.welcome.msg']}} {{loggedUser.login}}!</span>
 				<button class="btn btn-link white">{{msg['logout.button']}}</button>
 			</form>
 		</div>
 	</div>
 	<div class="yplanner-menu" ng-controller="UserController as userCtrl">
-		{{msg['yplanner.welcome.msg']}} {{loggedUser.login}}!
+		<ul class="nav nav-pills nav-stacked" ng-controller="MenuController as menuCtrl">
+			<li ng-class="{active: isActive('/')}"><a href="#/">{{msg['yplanner.menu.dashboard']}}</a></li>
+			<li ng-class="{active: isActive('/admin')}" ng-if="loggedUser.admin"><a href="#/admin">{{msg['yplanner.menu.administrate']}}</a></li>
+		</ul>
 	</div>
 </body>
 </html>

@@ -4,11 +4,15 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import pl.plask.team.yplanner.bc.model.ds.helper.YesNoEnum;
 
 @Entity
 @Table(name = "YPL_USERS")
@@ -25,6 +29,7 @@ public class UserDS implements Serializable {
 	private String login;
 	private String password;
 	private String email;
+	private YesNoEnum admin;
 
 	@Id
 	@SequenceGenerator(name = "yplUsersSeq", sequenceName = "YPL_USERS_SEQ")
@@ -80,6 +85,16 @@ public class UserDS implements Serializable {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	@Column(name = "ADMIN")
+	@Enumerated(EnumType.STRING)
+	public YesNoEnum getAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(YesNoEnum admin) {
+		this.admin = admin;
 	}
 
 	@Override

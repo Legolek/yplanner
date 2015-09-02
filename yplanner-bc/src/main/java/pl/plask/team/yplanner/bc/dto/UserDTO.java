@@ -15,6 +15,11 @@ public class UserDTO implements Serializable {
 	private String login;
 	private String password;
 	private String email;
+	private boolean admin;
+	
+	public static UserDTO empty() {
+		return new UserDTO();
+	}
 	
 	public Long getId() {
 		return id;
@@ -54,5 +59,13 @@ public class UserDTO implements Serializable {
 	
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public boolean isAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(boolean admin) {
+		this.admin = admin;
 	}
 }

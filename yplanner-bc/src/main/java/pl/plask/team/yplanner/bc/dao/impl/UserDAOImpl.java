@@ -1,5 +1,7 @@
 package pl.plask.team.yplanner.bc.dao.impl;
 
+import java.util.Optional;
+
 import javax.transaction.Transactional;
 import javax.transaction.Transactional.TxType;
 
@@ -14,10 +16,10 @@ public class UserDAOImpl extends HibernateDAOImpl<UserDS> implements UserDAO {
 
 	@Override
 	@Transactional(value = TxType.SUPPORTS)
-	public UserDS getUserByName(String name) {
+	public Optional<UserDS> getUserByName(String name) {
 		Query query = getSession().createQuery("from UserDS where login = :login");
 		query.setString("login", name);
-		return (UserDS) query.uniqueResult();
+		return Optional.ofNullable((UserDS) query.uniqueResult());
 	}
 
 }

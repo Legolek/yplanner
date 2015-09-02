@@ -1,1 +1,2 @@
-INSERT INTO ypl_users (id, first_name, last_name, password, login, email) VALUES (ypl_users_seq.nextval, 'TestFristName1', 'TestLastName1', 'TestPassword1', 'TestLogin1', 'TestEmail1');
+INSERT INTO ypl_users (id, first_name, last_name, password, login, email, admin) VALUES (ypl_users_seq.nextval, 'TestFristName1', 'TestLastName1', 'TestPassword1', 'TestLogin1', 'TestEmail1', 'N');
+INSERT INTO ypl_users (id, first_name, last_name, password, login, email, admin) VALUES (ypl_users_seq.nextval, 'TestFristName10', 'TestLastName10', 'TestPassword10', 'TestLogin10', 'TestEmail10', 'Y');
