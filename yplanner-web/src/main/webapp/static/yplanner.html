@@ -7,6 +7,7 @@
 <script src="js/vendor/angular-resource.min.js"></script>
 <script src="js/vendor/angular-route.min.js"></script>
 <script src="js/yplanner.js"></script>
+<script src="js/yplanner-routing.js"></script>
 <script src="js/user/user-service.js"></script>
 <script src="js/messages/messages-service.js"></script>
 <script src="js/vendor/ui-bootstrap-tpls-0.13.1.min.js"></script>
@@ -33,6 +34,10 @@
 			<li ng-class="{active: isActive('/')}"><a href="#/">{{msg['yplanner.menu.dashboard']}}</a></li>
 			<li ng-class="{active: isActive('/admin')}" ng-if="loggedUser.admin"><a href="#/admin">{{msg['yplanner.menu.administrate']}}</a></li>
 		</ul>
+	</div>
+	<div class="yplanner-content">
+		<div ng-view>
+		</div>
 	</div>
 </body>
 </html>

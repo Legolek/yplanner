@@ -1,4 +1,4 @@
-var app = angular.module("yplanner", [ 'msg' ]);
+var app = angular.module("yplanner", [ "msg", "ngRoute" ]);
 
 app.controller("MenuController", function($scope, $location) {
 	$scope.isActive = function(view) {
@@ -7,4 +7,9 @@ app.controller("MenuController", function($scope, $location) {
 		}
 		return (view === $location.path());
 	}
+});
+
+app.controller("UserController", function($scope, UserService) {
+	$scope.loggedUser = UserService.loggedUser;
+	UserService.getLoggedUser();
 });

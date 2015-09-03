@@ -11,8 +11,3 @@ app.service("UserService", ['$http', function($http) {
 		loggedUser : loggedUser
 	}
 }]);
-
-app.controller("UserController", function($scope, UserService) {
-	$scope.loggedUser = UserService.loggedUser;
-	UserService.getLoggedUser();
-});
