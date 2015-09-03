@@ -34,6 +34,7 @@
 		<sec:intercept-url pattern="/img/**" access="permitAll" />
 		<sec:intercept-url pattern="/fonts/**" access="permitAll" />
 		<sec:intercept-url pattern="/res/**" access="permitAll" />
+		<sec:intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
 		<sec:intercept-url pattern="/**" access="hasRole('ROLE_USER')" />
 		<sec:form-login username-parameter="name"
 			password-parameter="password" login-page="/index.html"

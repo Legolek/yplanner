@@ -1,1 +1,23 @@
-<h2>ADMIN MAIN PAGE</h2>
+<div style="width: 100%; height: 650px; overflow-y: auto">
+	<table class="table table-stripped">
+		<thead>
+			<tr>
+				<td>{{msg['yplanner.admin.users.login']}}</td>
+				<td>{{msg['yplanner.admin.users.first.name']}}</td>
+				<td>{{msg['yplanner.admin.users.last.name']}}</td>
+				<td>{{msg['yplanner.admin.users.email']}}</td>
+				<td>{{msg['yplanner.admin.users.admin']}}</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="user in users">
+				<td>{{user.login}}</td>
+				<td>{{user.firstName}}</td>
+				<td>{{user.lastName}}</td>
+				<td>{{user.email}}</td>
+				<td><input type="checkbox" ng-checked="user.admin"
+					disabled="true" /></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
