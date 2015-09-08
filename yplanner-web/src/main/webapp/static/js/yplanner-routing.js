@@ -5,5 +5,9 @@ app.config(["$routeProvider", function($routeProvider) {
 		templateUrl: "js/admin/admin.html",
 		controller: "AdminUserController",
 		controllerAs: "AdminUserCtrl"
+	}).when("/admin/user/add", {
+		templateUrl: "js/admin/add_user.html",
+		controller: "AdminUserController",
+		controllerAs: "AdminUserCtrl"
 	});
 }]);

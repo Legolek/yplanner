@@ -117,3 +117,11 @@ div::-webkit-scrollbar-thumb
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
 	background-color: #555;
 }
+
+.ng-invalid.ng-dirty {
+	border-color: #cc0000;
+}
+
+.ng-valid.ng-dirty {
+	border-color: #00cc00;
+}

@@ -3,7 +3,7 @@ package pl.plask.team.yplanner.bc.model.ds.helper;
 public enum YesNoEnum {
 	Y, N;
 	
-	public boolean toBoolean() {
+	public boolean booleanValue() {
 		return equals(Y);
 	}
 	

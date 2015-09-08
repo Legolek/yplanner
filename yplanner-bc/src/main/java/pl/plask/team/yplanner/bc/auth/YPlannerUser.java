@@ -27,7 +27,7 @@ public class YPlannerUser extends User {
 	public static YPlannerUser createFromDS(UserDS user) {
 		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 		authorities.add(new SimpleGrantedAuthority(YPLANNER_ROLE_USER));
-		if (user.getAdmin().toBoolean()) {
+		if (user.getAdmin().booleanValue()) {
 			authorities.add(new SimpleGrantedAuthority(YPLANNER_ROLE_ADMIN));
 		}
 		return new YPlannerUser(user.getLogin(), user.getPassword(), authorities);

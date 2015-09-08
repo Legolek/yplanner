@@ -5,7 +5,8 @@ app.controller("MenuController", function($scope, $location) {
 		if (view === '/' && $location.path() === '') {
 			return true;
 		}
-		return (view === $location.path());
+		var splitArr = $location.path().split("/");
+		return (view === "/" + splitArr[1]);
 	}
 });
 
