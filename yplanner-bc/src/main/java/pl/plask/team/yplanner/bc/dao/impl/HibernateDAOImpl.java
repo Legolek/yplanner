@@ -7,9 +7,11 @@ import javax.transaction.Transactional.TxType;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Projections;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import pl.plask.team.yplanner.bc.dao.HibernateDAO;
+import pl.plask.team.yplanner.bc.model.ds.UserDS;
 
 public class HibernateDAOImpl<T> implements HibernateDAO<T> {
 	
@@ -17,7 +19,7 @@ public class HibernateDAOImpl<T> implements HibernateDAO<T> {
 
 	@Override
 	@SuppressWarnings("unchecked")
-	@Transactional(value = TxType.REQUIRED)
+	@Transactional(value = TxType.SUPPORTS)
 	public T get(Class<T> clazz, Long id) {
 		return (T) getSession().get(clazz, id);
 	}
@@ -30,10 +32,17 @@ public class HibernateDAOImpl<T> implements HibernateDAO<T> {
 	
 	@Override
 	@SuppressWarnings("unchecked")
-	@Transactional(value = TxType.REQUIRED)
+	@Transactional(value = TxType.SUPPORTS)
 	public List<T> getAll(Class<T> clazz) {
 		return (List<T>) getSession().createCriteria(clazz).list();
 	}
+	
+	@Override
+	@Transactional(value = TxType.SUPPORTS)
+	public Long count(Class<T> clazz) {
+		return (Long) getSession().createCriteria(clazz).setProjection(Projections.count("id")).uniqueResult();
+	}
+
 
 	@Override
 	public Session getSession() {
@@ -48,5 +57,5 @@ public class HibernateDAOImpl<T> implements HibernateDAO<T> {
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
-
+	
 }

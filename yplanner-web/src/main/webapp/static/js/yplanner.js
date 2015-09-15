@@ -1,4 +1,4 @@
-var app = angular.module("yplanner", [ "msg", "ngRoute" ]);
+var app = angular.module("yplanner", [ "msg", "ngRoute", "ui.bootstrap"]);
 
 app.controller("MenuController", function($scope, $location) {
 	$scope.isActive = function(view) {

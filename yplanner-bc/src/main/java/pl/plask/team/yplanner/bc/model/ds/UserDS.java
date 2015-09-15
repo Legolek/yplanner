@@ -15,7 +15,7 @@ import javax.persistence.Table;
 import pl.plask.team.yplanner.bc.model.ds.helper.YesNoEnum;
 
 @Entity
-@Table(name = "YPL_USERS")
+@Table(name = UserDS.TABLE_NAME)
 public class UserDS implements Serializable {
 
 	/**
@@ -23,6 +23,16 @@ public class UserDS implements Serializable {
 	 */
 	private static final long serialVersionUID = 929916685441550562L;
 
+	public static final String TABLE_NAME = "YPL_USERS";
+	
+	public static final String ID_COL = "ID";
+	public static final String FIRST_NAME_COL = "FIRST_NAME";
+	public static final String LAST_NAME_COL = "LAST_NAME";
+	public static final String ADMIN_COL = "ADMIN";
+	public static final String LOGIN_COL = "LOGIN";
+	public static final String PASSWORD_COL = "PASSWORD";
+	public static final String EMAIL_COL = "EMAIL";
+	
 	private Long id;
 	private String firstName;
 	private String lastName;
@@ -34,6 +44,7 @@ public class UserDS implements Serializable {
 	@Id
 	@SequenceGenerator(name = "yplUsersSeq", sequenceName = "YPL_USERS_SEQ")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "yplUsersSeq")
+	@Column(name = ID_COL)
 	public Long getId() {
 		return id;
 	}
@@ -42,7 +53,7 @@ public class UserDS implements Serializable {
 		this.id = id;
 	}
 
-	@Column(name = "FIRST_NAME")
+	@Column(name = FIRST_NAME_COL)
 	public String getFirstName() {
 		return firstName;
 	}
@@ -51,7 +62,7 @@ public class UserDS implements Serializable {
 		this.firstName = firstName;
 	}
 
-	@Column(name = "LAST_NAME")
+	@Column(name = LAST_NAME_COL)
 	public String getLastName() {
 		return lastName;
 	}
@@ -60,7 +71,7 @@ public class UserDS implements Serializable {
 		this.lastName = lastName;
 	}
 
-	@Column(name = "LOGIN")
+	@Column(name = LOGIN_COL)
 	public String getLogin() {
 		return login;
 	}
@@ -69,7 +80,7 @@ public class UserDS implements Serializable {
 		this.login = login;
 	}
 
-	@Column(name = "PASSWORD")
+	@Column(name = PASSWORD_COL)
 	public String getPassword() {
 		return password;
 	}
@@ -78,7 +89,7 @@ public class UserDS implements Serializable {
 		this.password = password;
 	}
 
-	@Column(name = "EMAIL")
+	@Column(name = EMAIL_COL)
 	public String getEmail() {
 		return email;
 	}
@@ -87,7 +98,7 @@ public class UserDS implements Serializable {
 		this.email = email;
 	}
 
-	@Column(name = "ADMIN")
+	@Column(name = ADMIN_COL)
 	@Enumerated(EnumType.STRING)
 	public YesNoEnum getAdmin() {
 		return admin;

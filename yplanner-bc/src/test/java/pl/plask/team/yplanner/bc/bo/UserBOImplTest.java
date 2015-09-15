@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.test.context.ContextConfiguration;
@@ -59,7 +60,40 @@ public class UserBOImplTest {
 	public void testGetAllUsers() {
 		List<UserDTO> users = userBo.getAllUsers();
 		Assert.assertNotNull(users);
+		Assert.assertEquals(6, users.size());
+	}
+	
+	@Test
+	public void testGetAllUsersByPage() {
+		List<UserDTO> users = userBo.getAllUsersByPage(new PageRequest(0, 4));
+		Assert.assertNotNull(users);
+		Assert.assertEquals(4, users.size());
+		
+		users = userBo.getAllUsersByPage(new PageRequest(1, 4));
+		Assert.assertNotNull(users);
 		Assert.assertEquals(2, users.size());
+		
+		users = userBo.getAllUsersByPage(new PageRequest(0, 3));
+		Assert.assertNotNull(users);
+		Assert.assertEquals(3, users.size());
+		
+		users = userBo.getAllUsersByPage(new PageRequest(1, 3));
+		Assert.assertNotNull(users);
+		Assert.assertEquals(3, users.size());
+		
+		users = userBo.getAllUsersByPage(new PageRequest(0, 2));
+		Assert.assertNotNull(users);
+		Assert.assertEquals(2, users.size());
+		
+		users = userBo.getAllUsersByPage(new PageRequest(1, 2));
+		Assert.assertNotNull(users);
+		Assert.assertEquals(2, users.size());
+	}
+	
+	@Test
+	public void testCountUsers() {
+		long count = userBo.countUsers();
+		Assert.assertEquals(6, count);
 	}
 
 	public UserBO getUserBo() {

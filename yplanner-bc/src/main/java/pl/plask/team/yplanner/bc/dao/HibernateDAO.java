@@ -12,5 +12,7 @@ public interface HibernateDAO<T> {
 	
 	public List<T> getAll(Class<T> clazz);
 	
+	public Long count(Class<T> clazz);
+	
 	public Session getSession();
 }

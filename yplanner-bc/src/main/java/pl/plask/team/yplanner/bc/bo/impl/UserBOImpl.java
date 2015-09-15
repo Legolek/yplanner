@@ -5,6 +5,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
@@ -41,6 +42,17 @@ public class UserBOImpl implements UserBO {
 	public List<UserDTO> getAllUsers() {
 		List<UserDS> users = userDao.getAll(UserDS.class);
 		return users.stream().map(userAssembler::convertToDTO).collect(Collectors.toList());
+	}
+	
+	@Override
+	public List<UserDTO> getAllUsersByPage(Pageable page) {
+		List<UserDS> users = userDao.getAllUsersByPage(page);
+		return users.stream().map(userAssembler::convertToDTO).collect(Collectors.toList());
+	}
+	
+	@Override
+	public Long countUsers() {
+		return userDao.count(UserDS.class);
 	}
 
 	public UserDAO getUserDao() {

@@ -3,6 +3,7 @@
 	<a class="btn btn-default" href="#/admin/user/add">{{msg['yplanner.admin.users.add.user']}}</a>
 </div>
 <div style="width: 100%; height: 650px; overflow-y: auto">
+	<pagination total-items="totalItems" ng-model="currentPage" ng-change="changePage()"></pagination>
 	<table class="table table-stripped">
 		<thead>
 			<tr>
@@ -24,4 +25,5 @@
 			</tr>
 		</tbody>
 	</table>
+	<p>{{msgFormat('yplanner.paging.users.msg', [totalItems])}}</p>
 </div>

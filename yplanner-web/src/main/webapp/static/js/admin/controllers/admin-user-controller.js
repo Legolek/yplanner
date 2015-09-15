@@ -3,10 +3,20 @@ var app = angular.module("yplanner");
 app.controller("AdminUserController", function($scope, AdminUser) {
 	$scope.user = {};
 	$scope.users = {};
+	$scope.currentPage = 1;
+	$scope.totalItems = -1;
 	$scope.saveUser = function() {
 		alert($scope.user.login);
 	}
-	AdminUser.all().success(function(data) {
+	AdminUser.count().success(function(data) {
+		$scope.totalItems = data;
+	});
+	AdminUser.all($scope.currentPage - 1).success(function(data) {
 		$scope.users = data;
 	});
+	$scope.changePage = function() {
+		AdminUser.all($scope.currentPage - 1).success(function(data) {
+			$scope.users = data;
+		});
+	}
 });
