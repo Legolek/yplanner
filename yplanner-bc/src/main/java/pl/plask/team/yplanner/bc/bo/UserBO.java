@@ -15,4 +15,6 @@ public interface UserBO extends UserDetailsService {
 	public List<UserDTO> getAllUsersByPage(Pageable page);
 	
 	public Long countUsers();
+	
+	public void addUser(UserDTO user);
 }

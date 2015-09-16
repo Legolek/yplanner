@@ -54,6 +54,12 @@ public class UserBOImpl implements UserBO {
 	public Long countUsers() {
 		return userDao.count(UserDS.class);
 	}
+	
+	@Override
+	public void addUser(UserDTO user) {
+		UserDS u = userAssembler.convertToDS(user);
+		userDao.save(u);
+	}
 
 	public UserDAO getUserDao() {
 		return userDao;

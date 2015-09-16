@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,6 +28,12 @@ public class AdminUserController {
 	@RequestMapping(value = "/admin/users/{pageNumber}", method = RequestMethod.GET)
 	public List<UserDTO> getAllUsersByPage(@PathVariable String pageNumber) {
 		return userBo.getAllUsersByPage(new PageRequest(Integer.valueOf(pageNumber), DEFAULT_PAGE_SIZE));
+	}
+	
+	@RequestMapping(value = "/admin/new/user", method = RequestMethod.PUT)
+	public String addUser(@RequestBody UserDTO user) {
+		userBo.addUser(user);
+		return "success";
 	}
 	
 	@RequestMapping(value = "/admin/count/users", method = RequestMethod.GET)

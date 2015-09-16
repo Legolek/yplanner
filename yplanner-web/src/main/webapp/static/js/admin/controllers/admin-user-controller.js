@@ -6,7 +6,9 @@ app.controller("AdminUserController", function($scope, AdminUser) {
 	$scope.currentPage = 1;
 	$scope.totalItems = -1;
 	$scope.saveUser = function() {
-		alert($scope.user.login);
+		AdminUser.addUser($scope.user).success(function(data) {
+			// $scope.$apply(function() { $location.path("/admin"); });
+		});
 	}
 	AdminUser.count().success(function(data) {
 		$scope.totalItems = data;

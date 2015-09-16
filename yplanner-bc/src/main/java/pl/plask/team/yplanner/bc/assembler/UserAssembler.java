@@ -5,4 +5,6 @@ import pl.plask.team.yplanner.bc.model.ds.UserDS;
 
 public interface UserAssembler {
 	public UserDTO convertToDTO(UserDS user);
+	
+	public UserDS convertToDS(UserDTO user);
 }

@@ -6,7 +6,7 @@ app.factory("AdminUser", function AdminUserFacory($http) {
 			return $http({method: 'GET', url: 'admin/users/' + page});
 		},
 		addUser: function(user) {
-			
+			return $http({method: 'PUT', url: 'admin/new/user', data: user});
 		},
 		count: function() {
 			return $http({method: 'GET', url: 'admin/count/users'});

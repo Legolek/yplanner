@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 import pl.plask.team.yplanner.bc.assembler.UserAssembler;
 import pl.plask.team.yplanner.bc.dto.UserDTO;
 import pl.plask.team.yplanner.bc.model.ds.UserDS;
+import pl.plask.team.yplanner.bc.model.ds.helper.YesNoEnum;
 
 @Component
 public class UserAssemblerImpl implements UserAssembler {
@@ -19,6 +20,19 @@ public class UserAssemblerImpl implements UserAssembler {
 		u.setLastName(user.getLastName());
 		u.setLogin(user.getLogin());
 		u.setAdmin(user.getAdmin() != null ? user.getAdmin().booleanValue() : false);
+		return u;
+	}
+	
+	public UserDS convertToDS(UserDTO user) {
+		if (user == null) {
+			return null;
+		}
+		UserDS u = new UserDS();
+		u.setId(user.getId());
+		u.setFirstName(user.getFirstName());
+		u.setLastName(user.getLastName());
+		u.setLogin(user.getLogin());
+		u.setAdmin(YesNoEnum.get(user.isAdmin()));
 		return u;
 	}
 }
