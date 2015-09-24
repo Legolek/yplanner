@@ -10,6 +10,12 @@ app.factory("AdminUser", function AdminUserFacory($http) {
 		},
 		count: function() {
 			return $http({method: 'GET', url: 'admin/count/users'});
+		},
+		generatePassword: function() {
+			return $http({method: 'GET', url: 'admin/genpassword'});
+		},
+		checkUniqueLogin: function(login) {
+			return $http({method: 'POST', url: 'admin/checklogin', data: login});
 		}
 	};
 });

@@ -11,6 +11,7 @@
 <script src="js/messages/messages-service.js"></script>
 <script src="js/vendor/ui-bootstrap-tpls-0.13.1.min.js"></script>
 <script src="js/vendor/jquery-2.1.4.min.js"></script>
+<script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/md5.js"></script>
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/bootstrap-theme.min.css" rel="stylesheet">
 <link href="css/yplanner.css" rel="stylesheet">
@@ -19,14 +20,15 @@
 </head>
 <body ng-app="index" ng-controller="MsgController as msg">
 	<div id="loginForm"  class="form-group" ng-controller="LoginController as loginCtrl">
-		<form action="login" method="POST">
+		<form action="login" method="POST" ng-submit="beforeSubmit()">
 			<p>{{msg['app.name']}}</p>
 			<p><label for="name">{{msg['login.page.login.label']}}</label>
-			<input name="name" class="form-control" type="text" ng-model="loginCtrl.login"  /></p>
+			<input name="name" class="form-control" type="text" ng-model="login"  /></p>
 			<p><label for="password">{{msg['login.page.password.label']}}</label>
-			<input name="password" class="form-control" type="password" ng-model="loginCtrl.password" /></p>
+			<input name="passwordText" class="form-control" type="password" ng-model="passwordText" /></p>
+			<input name="password" type="hidden" value="{{password}}" />
 			<p><button class='btn btn-primary'>{{msg['login.page.submit.button']}}</button></p>
-			<div class="alert alert-danger" ng-show="loginCtrl.error">{{msg['login.page.login.error']}}</div>
+			<div class="alert alert-danger" ng-show="error">{{msg['login.page.login.error']}}</div>
 		</form>
 	</div>
 </body>

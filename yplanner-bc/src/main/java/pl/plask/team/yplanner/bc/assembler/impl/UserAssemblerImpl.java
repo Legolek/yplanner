@@ -20,6 +20,7 @@ public class UserAssemblerImpl implements UserAssembler {
 		u.setLastName(user.getLastName());
 		u.setLogin(user.getLogin());
 		u.setAdmin(user.getAdmin() != null ? user.getAdmin().booleanValue() : false);
+		u.setEmail(user.getEmail());
 		return u;
 	}
 	
@@ -33,6 +34,8 @@ public class UserAssemblerImpl implements UserAssembler {
 		u.setLastName(user.getLastName());
 		u.setLogin(user.getLogin());
 		u.setAdmin(YesNoEnum.get(user.isAdmin()));
+		u.setEmail(user.getEmail());
+		u.setPassword(user.getPassword());
 		return u;
 	}
 }

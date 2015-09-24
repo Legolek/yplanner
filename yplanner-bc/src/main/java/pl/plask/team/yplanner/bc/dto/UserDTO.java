@@ -68,4 +68,12 @@ public class UserDTO implements Serializable {
 	public void setAdmin(boolean admin) {
 		this.admin = admin;
 	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 }

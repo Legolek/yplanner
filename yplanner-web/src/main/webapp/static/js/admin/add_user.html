@@ -3,12 +3,20 @@
 	<div class="row">
 		<div class="col-xs-6">
 			<label for="userLogin">{{msg['yplanner.admin.users.login']}}</label>
-			<input id="userLogin" type="text" ng-model="user.login"
-				class="form-control" required/>
+			<div class="input-group">
+				<input id="userLogin" type="text" ng-model="user.login" name="userlogin"
+					class="form-control" required userlogin />
+				<span ng-class="{'yplanner-invalid': addUserForm.userlogin.$error.userlogin, 'yplanner-valid': !addUserForm.userlogin.$error.userlogin}" class="input-group-addon">{{checkLoginMsg}}</span>
+			</div>
 		</div>
 		<div class="col-xs-6">
 			<label for="userPassword">{{msg['yplanner.admin.users.password']}}</label>
-			<input id="userPassword" type="password" ng-model="user.password" class="form-control" required />
+			<div class="input-group">
+				<input id="userPassword" type="text" ng-model="user.password" class="form-control" required minlength="10" />
+				<span class="input-group-btn">
+					<button class="btn btn-default" type="button" ng-click="getPassword()">{{msg['yplanner.admin.users.password.generate']}}</button>
+				</span>
+			</div>
 		</div>
 	</div>
 	<div class="row">

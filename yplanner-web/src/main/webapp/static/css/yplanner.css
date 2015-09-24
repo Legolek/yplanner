@@ -123,5 +123,20 @@ div::-webkit-scrollbar-thumb
 }
 
 .ng-valid.ng-dirty {
-	border-color: #00cc00;
+	border-color: #009900;
+}
+
+.yplanner-invalid {
+	color: #cc0000;
+}
+
+.yplanner-valid {
+	color: #009900;
+}
+
+.yplanner-alert {
+	position: fixed; 
+	top: 6px; 
+	left:40%; 
+	width: 30%;
 }
