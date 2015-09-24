@@ -15,7 +15,8 @@
 <script src="js/messages/messages-service.js"></script>
 <script src="js/vendor/ui-bootstrap-tpls-0.13.1.min.js"></script>
 <script src="js/vendor/jquery-2.1.4.min.js"></script>
-<script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/md5.js"></script>
+<script
+	src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/md5.js"></script>
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/bootstrap-theme.min.css" rel="stylesheet">
 <link href="css/yplanner.css" rel="stylesheet">
@@ -25,23 +26,30 @@
 	<div class="yplanner-header" ng-controller="UserController as userCtrl">
 		<img class="app-img" src="img/app-icon.png" />
 		<h3 class="logo white">{{msg['yplanner.app.name']}}</h3>
-		<alert class="yplanner-alert" ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)" dismiss-on-timeout="5000">{{alert.message}}</alert>
+		<alert class="yplanner-alert" ng-repeat="alert in alerts"
+			type="{{alert.type}}" close="closeAlert($index)"
+			dismiss-on-timeout="5000">{{alert.message}}</alert>
 		<div class="logout">
 			<form action="logout" method="POST">
-				<span class="white">{{msg['yplanner.welcome.msg']}} {{loggedUser.login}}!</span>
+				<span class="white">{{msg['yplanner.welcome.msg']}}
+					{{loggedUser.login}}!</span>
 				<button class="btn btn-link white">{{msg['logout.button']}}</button>
 			</form>
 		</div>
 	</div>
 	<div class="yplanner-menu" ng-controller="UserController as userCtrl">
 		<ul class="nav nav-pills nav-stacked" ng-controller="MenuController as menuCtrl">
-			<li ng-class="{active: isActive('/')}"><a href="#/">{{msg['yplanner.menu.dashboard']}}</a></li>
-			<li ng-class="{active: isActive('/admin')}" ng-if="loggedUser.admin"><a href="#/admin">{{msg['yplanner.menu.administrate']}}</a></li>
+			<li ng-class="{active: isActive('/', false)}"><a href="#/">{{msg['yplanner.menu.dashboard']}}</a></li>
+			<li ng-class="{active: isActive('/admin', false)}" ng-if="loggedUser.admin"><a href="#/admin">{{msg['yplanner.menu.administrate']}}</a>
+				<ul ng-class="{hidden: !isActive('/admin', false)}" class="nav nav-pills nav-stacked nav-level">
+					<li ng-class="{'active-submenu': isActive('/admin', true)}"><a href="#/admin">{{msg['yplanner.menu.administrate.users']}}</a></li>
+					<li ng-class="{'active-submenu': isActive('/admin/user/add', true)}"><a href="#/admin/user/add">{{msg['yplanner.menu.administrate.add.user']}}</a></li>
+				</ul>
+			</li>
 		</ul>
 	</div>
 	<div class="yplanner-wrapper">
-		<div ng-view class="yplanner-content"">
-		</div>
+		<div ng-view class="yplanner-content"></div>
 	</div>
 </body>
 </html>
